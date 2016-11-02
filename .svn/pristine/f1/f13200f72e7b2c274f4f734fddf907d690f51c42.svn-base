@@ -1,0 +1,52 @@
+<?php
+
+namespace App\Http\Requests;
+
+ 
+use Input; 
+
+class UserRequest extends Request {
+
+    /** 
+     * The metric validation rules.
+     *
+     * @return array
+     */
+    public function rules() {
+        //if ( $metrics = $this->metrics ) {
+            switch ( $this->method() ) {
+                case 'GET':
+                case 'DELETE': {
+                        return [ ];
+                    }
+                case 'POST': {
+                        return [
+                            'password_confirmation' => 'required',
+                            'password' => 'required|confirmed',
+                            'email' => 'required|email'
+                        ];
+                    }
+                case 'PUT':
+                case 'PATCH': { 
+                    
+
+                        return [
+                             
+                        ];
+                    
+                }
+                default:break;
+            }
+         
+    }
+
+    /**
+     * The
+     *
+     * @return bool
+     */
+    public function authorize() {
+        return true;
+    }
+
+}

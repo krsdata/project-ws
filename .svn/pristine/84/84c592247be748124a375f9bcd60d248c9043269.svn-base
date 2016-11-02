@@ -1,0 +1,32 @@
+<?php
+
+namespace Modules\Admin\Models;
+
+use Illuminate\Database\Eloquent\Model as Eloquent;
+use Modules\Admin\Models\Group;
+
+class User extends BaseModel {
+
+    /**
+     * The metrics table.
+     * 
+     * @var string
+     */
+    protected $table = 't_user';    
+    protected $primaryKey='UserID';    
+    protected $guarded = ['created_at' , 'updated_at'];
+    protected $fillable = ['first_name','last_name','phone','mobile','email', 
+                            'password','deviceID','device_token','remember_token'];  // All field of user table here    
+
+
+    public function group()
+    {
+        return $this->hasOne('Modules\Admin\Models\Group','GroupID','GroupID');
+    }
+    
+    public function getAuthPassword()
+    {
+         return $this->attributes['password'];//change the 'passwordFieldinYourTable' with the name of your field in the table
+    }
+
+}

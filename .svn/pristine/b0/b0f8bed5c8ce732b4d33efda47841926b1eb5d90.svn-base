@@ -1,0 +1,49 @@
+<?php
+namespace Modules\Admin\Http\Controllers; 
+
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Http\Request;
+use Modules\Admin\Http\Requests\LoginRequest;
+use Modules\Admin\Http\Requests\ForgotPasswordRequest;
+use Modules\Admin\Models\AdminLogin; 
+use Illuminate\Support\Facades\Auth; 
+use App\User;
+use Input;
+use Validator; 
+use Paginate;
+use Grids;
+use HTML;
+use Form;
+use View;
+use URL;
+use Lang;
+use Session;
+use App\Http\Controllers\Controller; 
+
+ 
+/**
+ * Class AdminController
+ */
+class AdminController extends Controller { 
+    /**
+     * @var  Repository
+     */ 
+    /**
+     * Displays all admin.
+     *
+     * @return \Illuminate\View\View
+     */ 
+    
+    public function __construct()
+    {  
+      $this->middleware( 'auth' );
+    }
+    /*
+    * Dashboard
+    **/
+    public function index() { 
+       return view('packages::dashboard.index');
+    } 
+
+}

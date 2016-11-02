@@ -1,0 +1,112 @@
+<?php
+ 
+/*Route::group(['middleware' => ['admin','web']], function ()
+{
+     
+    Route::get('admin', 'Modules\Admin\Http\Controllers\AdminController@index');
+    // USers Routs
+    Route::bind('member', function($value, $route) {
+        return Modules\Admin\Models\User::find($value);
+    });
+
+    Route::resource('admin/member', 'Modules\Admin\Http\Controllers\UsersController', [
+        'names' => [
+            'edit' => 'member.edit',
+            'show' => 'member.show',
+            'destroy' => 'member.destroy',
+            'update' => 'member.update',
+            'store' => 'member.store',
+            'index' => 'member',
+            'create' => 'member.create',
+        ]
+            ]
+    );   
+
+});
+*/
+
+  Route::get('admin/login','Modules\Admin\Http\Controllers\AuthController@index');
+  Route::get('admin/forgot-password','Modules\Admin\Http\Controllers\AuthController@forgetPassword');
+  Route::post('password/email','Modules\Admin\Http\Controllers\AuthController@sendResetPasswordLink');
+  Route::get('admin/password/reset','Modules\Admin\Http\Controllers\AuthController@resetPassword');  
+  Route::get('logout','Modules\Admin\Http\Controllers\AuthController@logout');  
+    
+  Route::post('admin/login',function(Modules\Admin\Models\User $user){
+     
+    $credentials = array('email' => Input::get('email'), 'password' => Input::get('password')); 
+        if (Auth::attempt($credentials, true)) {
+            
+            return Redirect::to('admin');
+        }else{ 
+           //return Redirect::to('admin/login')->withError(['message'=>'Invalid Credential!']);
+           return redirect()
+                        ->back()
+                        ->withInput()  
+                        ->withErrors(['message'=>'Invalid email or password. Try again!']);
+        } 
+
+    });
+      
+    Route::group(['middleware' => ['admin']], function () { 
+        Route::get('admin', 'Modules\Admin\Http\Controllers\AdminController@index');
+        
+        Route::bind('user', function($value, $route) {
+            return Modules\Admin\Models\User::find($value);
+        });
+
+        Route::resource('admin/user', 'Modules\Admin\Http\Controllers\UsersController', [
+            'names' => [
+                'edit' => 'user.edit',
+                'show' => 'user.show',
+                'destroy' => 'user.destroy',
+                'update' => 'user.update',
+                'store' => 'user.store',
+                'index' => 'user',
+                'create' => 'user.create',
+            ]
+                ]
+        ); 
+
+        /*------------Position Model and controller---------*/
+        Route::bind('position', function($value, $route) {
+            return Modules\Admin\Models\Position::find($value);
+        });
+
+        Route::resource('admin/position', 'Modules\Admin\Http\Controllers\PositionController', [
+            'names' => [
+                'edit' => 'position.edit',
+                'show' => 'position.show',
+                'destroy' => 'position.destroy',
+                'update' => 'position.update',
+                'store' => 'position.store',
+                'index' => 'position',
+                'create' => 'position.create'
+            ]
+                ]
+        );
+        /*---------End---------*/  
+
+        /*------------Criteria Model and controller---------*/
+        Route::bind('criteria', function($value, $route) {
+            return Modules\Admin\Models\Criteria::find($value);
+        });
+
+        Route::resource('admin/criteria', 'Modules\Admin\Http\Controllers\CriteriaController', [
+            'names' => [
+                'edit' => 'criteria.edit',
+                'show' => 'criteria.show',
+                'destroy' => 'criteria.destroy',
+                'update' => 'criteria.update',
+                'store' => 'criteria.store',
+                'index' => 'criteria',
+                'create' => 'criteria.create'
+            ]
+                ]
+        );
+        /*----------End---------*/  
+
+  });
+ 
+     
+ 
+  
