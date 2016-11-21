@@ -14,7 +14,7 @@ class Position extends Model
      * @var string
      */
     
-    protected $table = 't_position';
+    protected $table = 'positions';
 
     /**
      * The attributes that are mass assignable.

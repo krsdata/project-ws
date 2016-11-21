@@ -12,7 +12,7 @@ class InterviewRating extends Model
      *
      * @var string
      */
-    protected $table = 't_interview_rating';
+    protected $table = 'interview_ratings';
     /**
      * The attributes that are mass assignable.
      *

@@ -13,7 +13,7 @@ class Criteria extends Model
      *
      * @var string
      */
-    protected $table = 't_interview_criteria';
+    protected $table = 'interview_criterias';
     /**
      * The attributes that are mass assignable.
      *
