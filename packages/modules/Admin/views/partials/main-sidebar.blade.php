@@ -7,7 +7,7 @@
         <img alt="User Image" class="img-circle" src="{{ URL::asset('public/assets/dist/img/user2-160x160.jpg') }}">
       </div>
       <div class="pull-left info">
-        <p>Udex</p>
+        <p>Inesport</p>
         <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
       </div>
     </div>

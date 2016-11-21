@@ -63,8 +63,6 @@
                                                     <th>ID</th>
                                                     <th>Full Name</th>
                                                     <th>Email</th>
-                                                    <th>Domain Name</th>
-                                                    <th>Designation</th>  
                                                     <th>Signup Date</th>
                                                     <th>Status</th>
                                                     <th>Action</th>
@@ -88,8 +86,7 @@
                                                     <td>{{ $user->userID }}</td>
                                                     <td>{{ $user->first_name.' '.$user->last_name }}</td>
                                                     <td>{{ $user->email }} </td>
-                                                    <td>   {{ $helper->getCompanyUrl($user->email) }}</td>
-                                                    <td>{{ $user->position->position_name }}</td>  
+                                                   
                                                     <td>
                                                         {!! Carbon\Carbon::parse($user->created_at)->format('m-d-Y H:i:s A'); !!}
                                                     </td>

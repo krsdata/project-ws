@@ -88,9 +88,8 @@ class UsersController extends Controller {
         } else {
             $users = User::with('position')->orderBy('userID','desc')->Paginate($this->record_per_page);
         }
-        //dd($users[0]->group);
-       // dd($users[0]->position->position_name);
-        //dd($users);
+        
+        
         return view('packages::users.user.index', compact('status','users', 'page_title', 'page_action'));
     }
 

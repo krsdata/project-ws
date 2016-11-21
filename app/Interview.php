@@ -11,7 +11,7 @@ class Interview extends Model
      *
      * @var string
      */
-    protected $table = 't_interview';
+    protected $table = 'interviews';
     /**
      * The attributes that are mass assignable.
      *
