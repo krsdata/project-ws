@@ -12,22 +12,22 @@ class authJWT
 {
     public function handle($request, Closure $next)
     {    
-        try {
+        /*try {
            
             $user = JWTAuth::toUser($request->input('deviceToken'));
         } catch (Exception $e) {
 
             if ($e instanceof \Tymon\JWTAuth\Exceptions\TokenInvalidException){
                 //return response()->json(['error'=>'Token is Invalid']);
-                return response()->json([ "status"=>0,"message"=>"Token is Invalid!" ,'data' => '' ]);
+                return response()->json([ "status"=>0,"message"=>"Token is Invalid2!" ,'data' => '' ]);
             }else if ($e instanceof \Tymon\JWTAuth\Exceptions\TokenExpiredException){
-                return response()->json([ "status"=>0,"message"=>"Token is Expired!" ,'data' => '' ]);
+                return response()->json([ "status"=>0,"message"=>"Token is Expired2!" ,'data' => '' ]);
             }else if ($e instanceof \Tymon\JWTAuth\Exceptions\TokenBlacklistedException){
-                return response()->json([ "status"=>0,"message"=>"Token is Expired!" ,'data' => '' ]);
+                return response()->json([ "status"=>0,"message"=>"Token is Expired2!" ,'data' => '' ]);
             }else{
-                return response()->json([ "status"=>0,"message"=>"Token required!" ,'data' => '' ]);
+                return response()->json([ "status"=>0,"message"=>"Token required2!" ,'data' => '' ]);
             }
-        }
+        }*/
         return $next($request);
     }
 }
