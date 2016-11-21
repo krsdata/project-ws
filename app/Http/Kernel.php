@@ -17,6 +17,8 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
         \Illuminate\Session\Middleware\StartSession::class,
         \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+         \App\Http\Middleware\authJWT::class,
+         \App\Http\Middleware\HttpsProtocol::class 
     ];
 
     /**
@@ -53,5 +55,6 @@ class Kernel extends HttpKernel
         'api'   =>  \App\Http\Middleware\ApiMiddleware::class,
         'restApiAuth'   =>  \App\Http\Middleware\ApiMiddleware::class,
         'jwt-auth' => \App\Http\Middleware\authJWT::class,
+
     ];
 }
