@@ -24,7 +24,6 @@ class CreateUsersTable extends Migration
             $table->text('remember_token');
             $table->tinyInteger('status')->default(0);
             $table->integer('positionID')->unsigned();
-            //$table->foreign('positionID')->references('id')->on('positions');
             $table->timestamps();
         });
     }
